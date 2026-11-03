@@ -1,0 +1,54 @@
+{
+  "overview": [
+    "2,048,162 Gaussians, each packing 62 float32 values (248 bytes).",
+    "484.4 MB in total, and the math checks out to the byte: header + N x bytes per Gaussian."
+  ],
+  "A": [
+    "SH degrees 1-3 (view-dependent color) eat 72.6% of the file on their own. Biggest target by far.",
+    "Normals are always 0 yet still take up space. Pure dead weight: dropping them loses nothing."
+  ],
+  "B": [
+    "Average opacity sits at 0.228, median at 0.101.",
+    "33.8% of Gaussians are below 0.05, which is basically see-through. Prime pruning candidates.",
+    "5.9% are close to solid (> 0.9)."
+  ],
+  "C": [
+    "Typical size: the longest axis has a median of 0.036 and a P99 of 0.385 scene units.",
+    "Shape split: 43.7% needles, 22.2% discs hugging surfaces (same idea as RTG-SLAM), 34.1% 3D blobs.",
+    "The median long/short ratio is 62x. Round Gaussians are rare: just 1.9% have a ratio under 2."
+  ],
+  "D": [
+    "Base color (degree 0) carries 97.93% of the color energy with just 3 of the 48 coefficients.",
+    "3.9% of Gaussians have all 45 higher-order coefficients at exactly 0 (the spike at log10 = -6 in the plot). Storing 45 zeros per splat is wasted space."
+  ],
+  "D2": [
+    "The share of Gaussians that only need base color swings from 4.6% (threshold 0.01) to 85.7% (threshold 0.1). The threshold changes the story a lot.",
+    "So the threshold can't be picked by vibes. It has to come from rendering and PSNR, the way Papantonakis et al. tune it on color error across views."
+  ],
+  "E": [
+    "98% of Gaussians fit inside a 76.84 x 17.72 x 112.87 box (scene units).",
+    "The spread is very uneven: 30.4% of Gaussians sit in a sphere of radius 6.9 around the hotspot, which is just 0.89% of the volume. That hotspot is the main object, where the cameras spent the most time.",
+    "Far-out stragglers (floaters and distant background): 0.02 % of Gaussians.",
+    "Heads-up: scene units come from COLMAP, they are not meters."
+  ],
+  "F": [
+    "float16 costs about 0.01-0.02% of the standard deviation in every group. Half the size for basically free.",
+    "With 8-bit uniform, the most sensitive group is 'Higher-order SH f_rest' (3.39% of its standard deviation).",
+    "This table is numeric error only. Image quality is a separate question that needs renders and PSNR."
+  ],
+  "G": [
+    "The Gaussian count goes from 1,685,982 (7k) to 2,048,162 (30k), x1.21, and the file grows from 399 to 484 MB.",
+    "More training, more extreme shapes: needles 22.5% -> 43.7%, discs 5.4% -> 22.2%.",
+    "Opacity picks a side: near-solid (> 0.9) 0.4% -> 5.9%, near-transparent (< 0.05) 24.1% -> 33.8%."
+  ],
+  "F2": [
+    "The median Gaussian is only 0.036 across, while the scene spans tens of units, so positions need serious precision.",
+    "8-bit positions miss by 0.2326 on average, that is 6.47x the size of a typical Gaussian. Splats get shoved out of place and the geometry breaks, which the std-dev view in table F completely hides.",
+    "16-bit uniform beats float16 on the same bit budget (max error 0.0017 vs 0.0334), because float16 loses precision the further a point is from the origin."
+  ],
+  "H": [
+    "No-brainer moves alone (scenario 9) bring the file down to 98.3 MB, a x4.9 cut.",
+    "For reference, Compact3DGS and Papantonakis et al. reach x15-x30 with codebooks, hash grids and entropy coding.",
+    "What each scenario does to image quality stays unknown until we render and measure PSNR."
+  ]
+}

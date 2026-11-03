@@ -1,0 +1,7 @@
+﻿Group,Std dev,float16: mean error,float16: error/std dev,8-bit: mean error,8-bit: error/std dev
+Position (scene units),13.2,0.0014,0.01%,0.157,1.19%
+Base color f_dc,1.59,0.00023,0.01%,0.0168,1.06%
+Higher-order SH f_rest,0.0628,7.39e-06,0.01%,0.00213,3.39%
+Opacity (after sigmoid),0.279,2.38e-05,0.01%,0.00224,0.80%
+Scale (after exp),0.0542,1.09e-05,0.02%,0.000637,1.17%
+Rotation (quaternion),0.449,5.78e-05,0.01%,0.00196,0.44%

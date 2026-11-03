@@ -1,0 +1,13 @@
+﻿Item,Value
+Scene,truck
+File,truck_30000.ply
+Number of Gaussians N,"2,048,162"
+Properties / Gaussian,62
+Bytes / Gaussian,248
+SH degree,3
+File size,484.4 MB
+Check: File size = header + N x bytes/Gaussian,OK
+Check: No NaN / infinity,OK
+Check: Normals are all 0 (unused),OK
+"Check: Opacity after sigmoid lies in (0, 1)",OK
+Check: No zero-length quaternions,OK

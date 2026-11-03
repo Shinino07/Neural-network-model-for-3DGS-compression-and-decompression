@@ -1,0 +1,11 @@
+﻿Group,Floats,Bytes/Gaussian,Total (MB),% of size
+Position (xyz),3,12,23.44,4.8
+Normal (unused),3,12,23.44,4.8
+Base color (SH degree 0),3,12,23.44,4.8
+SH degree 1,9,36,70.32,14.5
+SH degree 2,15,60,117.2,24.2
+SH degree 3,21,84,164.08,33.9
+Opacity,1,4,7.81,1.6
+Scale,3,12,23.44,4.8
+Rotation,4,16,31.25,6.5
+TOTAL,62,248,484.41,100.0

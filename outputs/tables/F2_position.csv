@@ -1,0 +1,4 @@
+﻿Position encoding,Bits / coordinate,Mean error,Max error,Mean error / median Gaussian size
+float16,16,0.0032,0.0334,0.09x
+8-bit uniform,8,0.2326,0.4248,6.47x
+16-bit uniform,16,0.0009,0.0017,0.03x

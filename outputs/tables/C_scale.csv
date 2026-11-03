@@ -1,0 +1,8 @@
+﻿Quantity,P1,P50 (median),P99,Max
+Longest axis,0.00212,0.036,0.385,24.4
+Shortest axis,6.09e-07,0.000447,0.0503,0.708
+Long/short ratio,1.64,62.1,8.29e+04,2.31e+10
+% needle (mid/long < 0.1),,43.7 %,,
+% disc (short/mid < 0.1),,22.2 %,,
+% 3D blob (the rest),,34.1 %,,
+% near-round (long/short < 2),,1.9 %,,

@@ -1,0 +1,11 @@
+﻿Scenario,Size (MB),Compression (x),% remaining
+0. Original file,484.4,1.0,100.0
+1. Drop normals,461.0,1.1,95.2
+2. (1) + drop SH degree 3,296.9,1.6,61.3
+3. (1) + keep only SH degrees 0-1,179.7,2.7,37.1
+4. (1) + keep only base color (degree 0),109.4,4.4,22.6
+5. (1) + float16 everywhere,230.5,2.1,47.6
+6. Prune opacity < 0.005,472.2,1.0,97.5
+7. Prune opacity < 0.05,320.7,1.5,66.2
+8. (1) + adaptive SH (threshold 0.01),443.4,1.1,91.5
+9. Combined: prune<0.05 + drop normals + SH degree 2 + float16,98.3,4.9,20.3
